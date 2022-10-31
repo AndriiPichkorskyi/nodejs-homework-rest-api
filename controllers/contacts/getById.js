@@ -3,9 +3,9 @@ const Contact = require("../../models/contact");
 
 const getById = async (req, res) => {
   const { contactId } = req.params;
-  const { userId } = req.user;
+  const { _id } = req.user;
 
-  const result = await Contact.findOne({ _id: contactId, owner: userId });
+  const result = await Contact.findOne({ _id: contactId, owner: _id });
   if (result === null)
     throw RequestError(404, `There are no contacts with id: ${contactId}`);
 

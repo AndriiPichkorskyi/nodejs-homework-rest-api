@@ -3,13 +3,13 @@ const Contact = require("../../models/contact");
 const add = async (req, res) => {
   const {
     body,
-    user: { userId },
+    user: { _id },
   } = req;
 
   const result = await Contact.create({
     favorite: false,
     ...body,
-    owner: userId,
+    owner: _id,
   });
   res.status(201).json(result);
 };
