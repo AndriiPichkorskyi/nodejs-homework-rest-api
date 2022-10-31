@@ -2,11 +2,11 @@ const RequestError = require("../../helpers/RequestError");
 const Contact = require("../../models/contact");
 
 const removeById = async (req, res) => {
-  const { userId } = req.user;
+  const { _id } = req.user;
   const { contactId } = req.params;
   const result = await Contact.findOneAndRemove({
     _id: contactId,
-    owner: userId,
+    owner: _id,
   });
 
   if (result === null)

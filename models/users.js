@@ -1,9 +1,8 @@
-const { Schema, model, pluralize } = require("mongoose");
-pluralize(null);
+const { Schema, model } = require("mongoose");
+// require("mongoose").pluralize(null);
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-// const { handleSaveErrors } = require("../helpers");
 
 const userScheme = Schema(
   {

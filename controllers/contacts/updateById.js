@@ -4,14 +4,14 @@ const RequestError = require("../../helpers/RequestError");
 const updateById = async (req, res, next) => {
   const {
     body,
-    user: { userId },
+    user: { _id },
   } = req;
   const { contactId } = req.params;
 
   const result = await Contact.findOneAndUpdate(
     {
       _id: contactId,
-      owner: userId,
+      owner: _id,
     },
     body
   );

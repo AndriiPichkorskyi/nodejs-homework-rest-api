@@ -12,7 +12,7 @@ const router = express.Router();
 router.post("/register", validateBody(userSchema), ctrlWrapper(ctrl.register));
 router.post("/login", validateBody(userSchema), ctrlWrapper(ctrl.login));
 
-router.use(authMiddleware);
+router.use(ctrlWrapper(authMiddleware));
 
 router.get("/current", ctrlWrapper(ctrl.current));
 router.patch(
