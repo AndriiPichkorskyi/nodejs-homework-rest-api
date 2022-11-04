@@ -5,7 +5,7 @@ const updateSubscription = async (req, res) => {
   const user = req.user;
 
   const result = await User.findByIdAndUpdate(
-    user.userId,
+    user._id,
     { subscription: body.subscription },
     { new: true }
   );

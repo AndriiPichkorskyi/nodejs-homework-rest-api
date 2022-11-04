@@ -1,10 +1,13 @@
 const express = require("express");
 const ctrlWrapper = require("../../helpers/ctrlWrapper");
 
-const { validateBody } = require("../../middlewares");
+const {
+  validateBody,
+  authMiddleware,
+  uploadAvatarMiddleware,
+} = require("../../middlewares");
 const userSchema = require("../../schemas/user");
 const ctrl = require("../../controllers/auth");
-const authMiddleware = require("../../middlewares/authMiddleware");
 const subscriptionSchema = require("../../schemas/subscription");
 
 const router = express.Router();
@@ -21,5 +24,11 @@ router.patch(
   ctrlWrapper(ctrl.updateSubscription)
 );
 router.all("/logout", ctrlWrapper(ctrl.logout));
+
+router.patch(
+  "/avatar",
+  uploadAvatarMiddleware(),
+  ctrlWrapper(ctrl.updateAvatar)
+);
 
 module.exports = router;
