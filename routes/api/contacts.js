@@ -10,7 +10,7 @@ const authMiddleware = require("../../middlewares/authMiddleware");
 
 const router = express.Router();
 
-router.use(authMiddleware);
+router.use(ctrlWrapper(authMiddleware));
 
 router.get("/", ctrlWrapper(ctrl.getAll));
 router.get("/:contactId", isValidId, ctrlWrapper(ctrl.getById));

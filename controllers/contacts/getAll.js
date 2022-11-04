@@ -5,7 +5,7 @@ const getAll = async (req, res) => {
   let { page = 1, limit = 20, favorite = false } = req.query;
   limit = limit > 20 ? 20 : limit;
   const toSkip = page * limit - limit;
-  console.log(_id);
+
   const result = await Contact.find({
     owner: _id,
     favorite,

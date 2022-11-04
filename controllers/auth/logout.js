@@ -4,7 +4,7 @@ const logout = async (req, res) => {
   const user = req.user;
 
   const result = await User.findByIdAndUpdate(
-    user.userId,
+    user._id,
     { tokin: "" },
     { new: true }
   );
