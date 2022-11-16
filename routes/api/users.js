@@ -7,6 +7,7 @@ const {
   uploadAvatarMiddleware,
 } = require("../../middlewares");
 const userSchema = require("../../schemas/user");
+const verifySchema = require("../../schemas/verify");
 const ctrl = require("../../controllers/auth");
 const subscriptionSchema = require("../../schemas/subscription");
 
@@ -14,6 +15,12 @@ const router = express.Router();
 
 router.post("/register", validateBody(userSchema), ctrlWrapper(ctrl.register));
 router.post("/login", validateBody(userSchema), ctrlWrapper(ctrl.login));
+router.get("/verify/:verificationToken", ctrlWrapper(ctrl.verify));
+router.post(
+  "/verify/",
+  validateBody(verifySchema),
+  ctrlWrapper(ctrl.verifyResending)
+);
 
 router.use(ctrlWrapper(authMiddleware));
 
